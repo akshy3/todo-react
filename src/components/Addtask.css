@@ -1,0 +1,12 @@
+.Addtask {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    border: none;
+}
+
+.input:focus {
+    outline: none;
+} 

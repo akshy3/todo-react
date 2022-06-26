@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Task.css";
-function Task() {
+function Task(props) {
   const [checked, setChecked] = useState(false);
 
   const handleCheckPress = (e) => {
-    setChecked(prev => !prev)
-    console.log(e)
-  }
-  
+    setChecked((prev) => !prev);
+    // console.log(e);
+  };
 
   return (
     <div className="Task">
@@ -36,6 +35,7 @@ function Task() {
             stroke="black"
             strokeWidth="6"
             strokeLinecap="round"
+            strokeOpacity={checked ? "1" : "0"}
           />
           <path
             id="stroke2"
@@ -43,6 +43,7 @@ function Task() {
             stroke="black"
             strokeWidth="6"
             strokeLinecap="round"
+            strokeOpacity={checked ? "1" : "0"}
           />
         </g>
         <defs>
@@ -51,7 +52,7 @@ function Task() {
           </clipPath>
         </defs>
       </svg>
-      Task1
+      <span id="title" className={checked? "strike": ""}>{props.val.title}</span>
     </div>
   );
 }
