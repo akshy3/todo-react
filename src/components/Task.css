@@ -1,0 +1,10 @@
+.Task {
+    display: flex;
+    align-items: center;
+    margin: 7px;
+}
+
+.tickbox {
+    margin-right: 6px;
+}
+
