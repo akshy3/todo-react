@@ -3,19 +3,20 @@ import {v4 as uuid} from "uuid";
 import "./Addtask.css";
 function Addtask(props) {
   const inputRef = useRef(null);
-  const handleKeyUp = ({ key }) => {
-    if (key === "Enter") {
-      let value = (inputRef.current.value);
-      if (inputRef.current.value !== "") {
-        props.setData((prev) => [
-          ...prev,
-          { id: uuid(), title: value },
-        ]);
-        inputRef.current.value = "";
+
+  useEffect(() => {
+    const handleKeyUp = ({ key }) => {
+      if (key === "Enter") {
+        let value = (inputRef.current.value);
+        if (inputRef.current.value !== "") {
+          props.setData((prev) => [
+            ...prev,
+            { id: uuid(), title: value },
+          ]);
+          inputRef.current.value = "";
+        }
       }
     }
-  }
-  useEffect(() => {
     inputRef.current.addEventListener("keyup", handleKeyUp);
   }, []);
 
