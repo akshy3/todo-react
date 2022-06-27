@@ -1,29 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Task.css";
 
 let touchStartX;
 let touchMoveX;
-let touchEndX;
 function Task(props) {
   const [checked, setChecked] = useState(false);
   const [differenceX, setDifferenceX] = useState(0);
-  // const [DidTouchEnd, setDidTouchEnd] = useState(false);
 
   const handleCheckPress = (e) => {
     setChecked((prev) => !prev);
-    // console.log(e);
   };
 
   const handleTouchStart = (e) => {
     touchStartX = e.changedTouches[0].screenX;
-    // console.log(touchStartX);
-    // setDidTouchEnd(false)
   };
   const handleTouchMove = (e) => {
     touchMoveX = e.changedTouches[0].screenX;
     setDifferenceX(touchMoveX - touchStartX);
     if (differenceX > 200) {
-      props.deleteTask(props.val.id)
+      props.deleteTask(props.val.id);
     }
     console.log(
       "start",
@@ -35,8 +30,6 @@ function Task(props) {
     );
   };
   const handleTouchEnd = (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    // console.log(touchEndX);
     setDifferenceX(0);
   };
 
