@@ -1,7 +1,18 @@
 .Task {
     display: flex;
     align-items: center;
+    transition: all 0.1s ease;
+    /* border: 1px solid red; */
+    border-radius: 20px;
+    background-color:white;
+}
+.Taskcontainer {
+    background-color: rgba(249, 5, 5,0.5);
     margin: 7px;
+    /* border: 1px solid red; */
+    border-radius: 20px;
+    position: relative;
+    
 }
 
 .tickbox {
@@ -15,4 +26,10 @@
 .strike {
     text-decoration: line-through;
     opacity: 0.5;
+}
+
+.trashIcon {
+    position: absolute;
+    left: 3px;
+    top: 3px;
 }

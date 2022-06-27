@@ -1,20 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
+import {v4 as uuid} from "uuid";
 import "./Addtask.css";
 function Addtask(props) {
   const inputRef = useRef(null);
-  useEffect(() => {
-    inputRef.current.addEventListener("keyup", ({ key }) => {
-      if (key === "Enter") {
-        console.log("entered");
-        if (inputRef.current.value !== "") {
-          props.setData((prev) => [
-            ...prev,
-            { id: "4", title: inputRef.current.value },
-          ]);
-          inputRef.current.value = "";
-        }
+  const handleKeyUp = ({ key }) => {
+    if (key === "Enter") {
+      let value = (inputRef.current.value);
+      if (inputRef.current.value !== "") {
+        props.setData((prev) => [
+          ...prev,
+          { id: uuid(), title: value },
+        ]);
+        inputRef.current.value = "";
       }
-    });
+    }
+  }
+  useEffect(() => {
+    inputRef.current.addEventListener("keyup", handleKeyUp);
   }, []);
 
   return (
